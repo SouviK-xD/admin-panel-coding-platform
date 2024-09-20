@@ -1,0 +1,699 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0",
+    "title": "CODESPARTAN APIs",
+    "description": "These are apis used in the coding platform - CODESPARTAN."
+  },
+  "host": "",
+  "basePath": "/codespartan/apis",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {},
+  "paths": {
+    "/questions": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Get all questions",
+        "description": "This API will be used to get all questions in the database.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/questionsByTopicAndLevel": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Get questions of a particular topic of practice and level of problem.",
+        "description": "This API will be used to get questions mapped to the practice-topic-id and belong to the given level.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceTopicId": {
+                  "example": "any"
+                },
+                "level": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/questionsDetails": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Get question details",
+        "description": "This API will be used to get question details from question id including description, examples, constraints, hints, testcases and solution.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "question_id": {
+                  "example": "any"
+                },
+                "user_id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/questionByPracticeTopicId": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Get all questions of particular topic of practice.",
+        "description": "This API will be used to get all questions mapped to the practice-topic-id in the database.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceTopicId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/questionsByPracticeIdAndTopicId": {
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "summary": "Get all questions of particular topic of practice when ids of both are given.",
+        "description": "This API will be used to get all questions mapped to the practice id and topic id.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceId": {
+                  "example": "any"
+                },
+                "topicId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/topics": {
+      "get": {
+        "tags": [
+          "Topic"
+        ],
+        "summary": "Get all topics.",
+        "description": "This API will be used to get all topics in the database.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/topicsByPracticeId": {
+      "post": {
+        "tags": [
+          "Topic"
+        ],
+        "summary": "Get all topics of a particular practice.",
+        "description": "This API will be used to get all topics mapped to the practiceId.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/practices": {
+      "get": {
+        "tags": [
+          "Practice"
+        ],
+        "summary": "Get All Practices",
+        "description": "This API will be used to get all practices in the database.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/practicesToDisplay": {
+      "get": {
+        "tags": [
+          "Practice"
+        ],
+        "summary": "Get All Practices to display at Home Page",
+        "description": "This API will be used to get all practices to display at home page.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/practiceToDisplayByCategoryId": {
+      "post": {
+        "tags": [
+          "Practice"
+        ],
+        "summary": "Get Practices of given category to be displayed on home page",
+        "description": "This API will be used to get all practices mapped to the category Id and that will be displayed on home page.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/practicesByCategoryId": {
+      "post": {
+        "tags": [
+          "Practice"
+        ],
+        "summary": "Get All Practices of a particular category.",
+        "description": "This API will be used to get all practices mapped to the given category Id.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/practiceById": {
+      "post": {
+        "tags": [
+          "Practice"
+        ],
+        "summary": "Get Practice By Practice Id",
+        "description": "This API will be used to get practice with the given practice Id.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getPracticeAndTopicByPracticeTopicId": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceTopicId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getAllLanguages": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getLanguageByName": {
+      "post": {
+        "tags": [
+          "Language"
+        ],
+        "summary": "Get language details by Name",
+        "description": "This API will be used to get language details by their name.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "language": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getLanguageByPracticeId": {
+      "post": {
+        "tags": [
+          "Language"
+        ],
+        "summary": "Get language mapped to the practice",
+        "description": "This API will be used to get language details that is mapped to the practice Id.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "practiceId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getSubmissionsByUserIdAndQuestionId": {
+      "post": {
+        "tags": [
+          "Submission"
+        ],
+        "summary": "Get all submissions of a particular user and question",
+        "description": "This API will be used to get all submissions mapped to the userId and questionId.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                },
+                "questionId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/getSubmissionsByUserId": {
+      "post": {
+        "tags": [
+          "Submission"
+        ],
+        "summary": "Get all submissions of a particular user.",
+        "description": "This API will be used to get all submissions mapped to the userId.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/addSubmission": {
+      "post": {
+        "tags": [
+          "Submission"
+        ],
+        "summary": "Add submission for a particular user.",
+        "description": "This API will be used to add submission of the user to the submissions table.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "example": "any"
+                },
+                "questionId": {
+                  "example": "any"
+                },
+                "submissionCode": {
+                  "example": "any"
+                },
+                "timeTaken": {
+                  "example": "any"
+                },
+                "languageUsed": {
+                  "example": "any"
+                },
+                "submissionStatus": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/updateUserDetails": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update user details for the given userId.",
+        "description": "This API will be used to update user details of a particular user.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "example": "any"
+                },
+                "avatar_name": {
+                  "example": "any"
+                },
+                "first_name": {
+                  "example": "any"
+                },
+                "last_name": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "date_of_birth": {
+                  "example": "any"
+                },
+                "address_line_1": {
+                  "example": "any"
+                },
+                "address_line_2": {
+                  "example": "any"
+                },
+                "city": {
+                  "example": "any"
+                },
+                "state": {
+                  "example": "any"
+                },
+                "country": {
+                  "example": "any"
+                },
+                "postal_code": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/courses": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "API to get all courses.",
+        "description": "This API will be used to get all courses data.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/coursesToDisplay": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
+        "summary": "API to get all courses to display on home page.",
+        "description": "This API will be used to get courses to display on home page.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/courseCategories": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Get course categories.",
+        "description": "This API will be used to get all course categories in the database.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/practiceCategories": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Get practice categories.",
+        "description": "This API will be used to get all practice categories in the database.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/addTestcase": {
+      "post": {
+        "tags": [
+          "Testcase"
+        ],
+        "summary": "Add testcase for a particular user.",
+        "description": "This API will be used to add testcase to the submissions table.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "questionId": {
+                  "example": "any"
+                },
+                "input": {
+                  "example": "any"
+                },
+                "output": {
+                  "example": "any"
+                },
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
